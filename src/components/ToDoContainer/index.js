@@ -1,22 +1,33 @@
 import React, { Component } from "react";
-import FormInput from "../Input"
+import Add from "../Add"
+
 
 class ToDoContainer extends Component {
-    state={
-      input: ''
+    constructor(props) {
+      super(props);
+
+      this.state={
+        array: ""
+      };
     }
 
-    updateInput = async value => {
-      await this.setState({input: value})
+    updateArray =  value => {
+      // this.setState(state => {
+      //   const array = state.array.concat(value)
+
+      //   return {
+      //     array
+      //   }
+      // })
+      this.setState({array: value})
     }
+    // console.log({this.state.array})
   render() {
+    console.log(this.state.array)
     return (
-      <div><FormInput
-        type= "text"
-        value= {this.state.input}
-        update= {this.updateInput}
-      />
-      <h1>{this.state.input}</h1></div>
+      <div><Add updateParent= {this.state.updateArray} />
+      {this.state.array}
+      </div>
     );
   }
 }
