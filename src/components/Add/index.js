@@ -1,27 +1,29 @@
 import React, { Component } from "react";
-import FormInput from "../Input"
+import { Input } from  "../Input"
+import { Button } from "../Button"
 
-class Add extends Component {
-    state={
-      input: ''
-    }
+export class Add extends Component {
+  state = {
+    text: ""
+  };
 
-    updateInput = async value => {
-      await this.setState({input: value})
-    }
+  updateText = text => this.setState({ text })
+
+  updateParent = () => {
+    this.props.onClick(this.state.text);
+    this.setState({text: ""});
+  }
 
   render() {
     return (
-      
-      <div><FormInput
-        type= "text"
-        value= {this.state.input}
-        update= {this.updateInput}
-      />
-      <button onClick={this.props.updateParent}> Add </button>
-      </div>
+      <React.Fragment>
+        <Input 
+          name={this.state.text} 
+          value={this.state.text} 
+          updateText={this.updateText}/>
+
+        <Button onClick={this.updateParent} text='Add'/>
+      </React.Fragment>
     );
   }
 }
-
-export default Add;

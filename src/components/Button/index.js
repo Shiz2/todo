@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
-class Button extends Component {
+export class Button extends Component {
   render() {
-    return <button>Add</button>;
+    return (
+      <button 
+        type="button"
+        onClick = {this.props.onClick}>
+        {this.props.text}
+      </button>
+    );
   }
 }
 
-ReactDOM.render(<Button />, document.getElementById("root"));
-export default Button;
